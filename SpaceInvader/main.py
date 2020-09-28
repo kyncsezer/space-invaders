@@ -15,6 +15,7 @@ background = pygame.image.load("space-background.png")
 # Background sound
 mixer.music.load("background.wav")
 mixer.music.play(-1)
+music = False
 
 # Title and Icon
 pygame.display.set_caption("Space Invaders")
@@ -123,7 +124,13 @@ while running:
                     # Get the current x coordinate of  the spaceship
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
-
+            if event.key == pygame.K_m:
+                if not music:
+                    mixer.music.stop()
+                    music = True
+                else:
+                    mixer.music.play()
+                    music = False
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
